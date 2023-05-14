@@ -1,0 +1,43 @@
+/* override google translate */
+.goog-te-gadget img {
+  vertical-align: middle;
+  display: none;
+}
+
+.goog-te-gadget a span {
+padding: 8px 0;;
+}
+
+/* override google translate */
+.goog-te-banner-frame {
+  display: none !important;
+}
+
+.goog-te-combo {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 6px 8px;
+  color: #333;
+  font-family: 'Roboto', Arial, sans-serif;
+  font-size: 26px !important;
+  line-height: 1.5;
+}
+
+.goog-te-combo option {
+  font-family: 'Roboto', Arial, sans-serif;
+  font-size: 14px;
+}
+
+.goog-te-combo option:first-child {
+  color: #888;
+}
+
+.goog-tooltip {
+  display: none !important;
+}
+
+.goog-te-combo {
+  background-color: blue;
+  color: white;
+}
