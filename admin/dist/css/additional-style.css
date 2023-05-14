@@ -1,0 +1,18 @@
+/* textarea {
+  width: 100%;
+} */
+#modal-default, #modal-detail {
+  background-color: rgba(0,0,0,0.5) !important; /* Black background with opacity */
+}
+
+.preview-item {
+  display: inline-block;
+  position: relative;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+.preview-image {
+  max-width: 100px;
+  max-height: 100px;
+}
