@@ -513,6 +513,8 @@
             total_shop[0].innerHTML = "Rp " + (product_cart.harga_jual * product_qty.value).toLocaleString("ID");
             total_shop[1].innerHTML = "Rp " + (product_cart.harga_jual * product_qty.value).toLocaleString("ID");
             total_shop[2].innerHTML = "Rp " + (product_cart.harga_jual * product_qty.value).toLocaleString("ID");
+            product_cart.total_pembelian_cust = +product_qty.value;
+            localStorage.setItem('product_cart', JSON.stringify(product_cart));
         }
 
         product_qty.addEventListener("change", handleChangeQty);

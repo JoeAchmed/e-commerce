@@ -180,14 +180,8 @@ $products = $dbh->query($sql_produk);
                                             <img src="<?= $row["image_produk"] ?>" alt="Product image" class="product-image">
                                         </a>
 
-                                        <div class="product-action-vertical">
-                                            <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
-                                            <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
-                                            <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
-                                        </div><!-- End .product-action-vertical -->
-
                                         <div id="add-to-cart-more" class="product-action <?= $row['stok'] == 0 ? 'd-none' : '' ?>">
-                                            <a href="cart.php" class="btn-product btn-cart"><span>add to cart</span></a>
+                                            <a href="cart.php" class="btn-product btn-cart" onclick="localStorage.setItem('product_cart', '<?php echo htmlspecialchars(json_encode($row), ENT_QUOTES, 'UTF-8'); ?>')"><span>add to cart</span></a>
                                         </div><!-- End .product-action -->
                                     </figure><!-- End .product-media -->
 

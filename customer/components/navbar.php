@@ -81,7 +81,7 @@
                   <a id="navbar-product-image" href="" class="product-image">
                   </a>
                 </figure>
-                <a href="#" class="btn-remove" title="Remove Product"><i class="icon-close"></i></a>
+                <a href="#" class="btn-remove" title="Remove Product" onclick="localStorage.removeItem('product_cart'), window.location.href = 'index.php'"><i class="icon-close"></i></a>
               </div><!-- End .product -->
             </div><!-- End .cart-product -->
 

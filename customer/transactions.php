@@ -486,11 +486,14 @@ if (!$order) {
             timer: 3000
         });
 
+        var msg_update = "Thank you for shopping, your order has been recorded !";
+        var msg_delete = "Your order was successfully cancelled !";
+
         if (success) {
             Toast.fire({
                 icon: 'success',
-                title: `Sukses ${success === "create" ? "Tambah" : success === "update" ? "Ubah" : "Hapus"} Pesanan`,
-                text: `Horee... Pesanan sukses ${success === "create" ? "ditambahkan" : success === "update" ? "diubah" : "dihapus"} !`
+                title: `Success ${success === "create" ? "Create" : "Delete"} Order`,
+                text: `${success === "create" ? msg_update : msg_delete} !`
             })
         }
 

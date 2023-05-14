@@ -148,7 +148,7 @@
     // Set value pemesan
     document.getElementsByClassName("detail_tanggal_pesanan")[0].textContent = "Date: " + formatDate(order.tanggal);
     document.getElementsByClassName("detail_tanggal_pesanan")[1].textContent = formatDate(order.tanggal);
-    document.getElementById("detail_order_id").textContent = "#" + order.detail_order_id;
+    document.getElementById("detail_order_id").textContent = "#" + order.order_id;
     document.getElementById("deskripsi_pesanan").textContent = order.deskripsi;
     document.getElementById("detail_nama_pemesan").textContent = order.nama_pemesan;
     document.getElementById("detail_alamat_pemesan").textContent = order.alamat_pemesan;

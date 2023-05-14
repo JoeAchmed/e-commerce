@@ -2,43 +2,9 @@
 require_once '../db_config/dbkoneksi.php';
 
 $sql = "SELECT * FROM pesanan";
-$sql_pelanggan = "SELECT * FROM pelanggan";
 $order = $dbh->query($sql);
-$customer = $dbh->query($sql_pelanggan);
 
 $countOrder = $order->rowCount();
-$countOrderCostumer = $customer->rowCount();
-
-// Get visitor IP address
-$visitorIP = $_SERVER['REMOTE_ADDR'];
-
-// Get current date
-$today = date('Y-m-d');
-
-// File to store visitor data
-$visitorDataFile = 'visitor_data.txt';
-
-// Read the file contents
-$visitorData = file_get_contents($visitorDataFile);
-
-// Convert the contents to an array
-$visitorArray = explode("\n", $visitorData);
-
-// Check if the visitor's IP address exists in the array for today's date
-$visitorKey = array_search($visitorIP, $visitorArray);
-
-if ($visitorKey === false) {
-  // If the visitor's IP address is not found, add it to the array and update the file
-  $visitorArray[] = $visitorIP . '|' . $today;
-  $visitorData = implode("\n", $visitorArray);
-  file_put_contents($visitorDataFile, $visitorData);
-
-  // Increment the visitor count
-  $visitorCount = count($visitorArray);
-} else {
-  // If the visitor's IP address is already found, do not increment the count
-  $visitorCount = count($visitorArray);
-}
 ?>
 
 <!DOCTYPE html>
@@ -95,7 +61,7 @@ if ($visitorKey === false) {
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1 class="m-0">Dashboard</h1>
+              <h1 class="m-0">Dashboard Website</h1>
             </div><!-- /.col -->
           </div><!-- /.row -->
         </div><!-- /.container-fluid -->
@@ -126,9 +92,9 @@ if ($visitorKey === false) {
               <!-- small box -->
               <div class="small-box bg-success">
                 <div class="inner">
-                  <h3>53<sup style="font-size: 20px">%</sup></h3>
+                  <h3>Ahmad Waluyo<sup style="font-size: 20px"></sup></h3>
 
-                  <p>Bounce Rate</p>
+                  <p>Nama Mahasiswa</p>
                 </div>
                 <div class="icon">
                   <i class="ion ion-stats-bars"></i>
@@ -140,9 +106,9 @@ if ($visitorKey === false) {
               <!-- small box -->
               <div class="small-box bg-warning">
                 <div class="inner">
-                  <h3><?= $countOrderCostumer ?></h3>
+                  <h3>0110222291</h3>
 
-                  <p>Total Pelanggan</p>
+                  <p>NIM</p>
                 </div>
                 <div class="icon">
                   <i class="ion ion-person-add"></i>
@@ -154,9 +120,9 @@ if ($visitorKey === false) {
               <!-- small box -->
               <div class="small-box bg-danger">
                 <div class="inner">
-                  <h3><?= $visitorCount ?></h3>
+                  <h3>TI</h3>
 
-                  <p>User Online</p>
+                  <p>Prodi (TI15)</p>
                 </div>
                 <div class="icon">
                   <i class="ion ion-pie-graph"></i>
