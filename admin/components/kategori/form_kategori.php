@@ -12,7 +12,11 @@
           <div class="card-body pt-0">
             <div class="form-group">
               <label for="nama" class="col-form-label">Nama Kategori</label>
-              <input required id="nama" name="nama" type="text" class="form-control" value="" placeholder="Contoh: Televisi">
+              <input required id="nama" name="nama" type="text" class="form-control" value="" placeholder="Contoh: Elektronik">
+            </div>
+            <div class="form-group">
+              <label for="image_kategori" class="col-form-label">Gambar Kategori</label>
+              <input required id="image_kategori" name="image_kategori" type="text" class="form-control" value="" placeholder="Contoh: https://minuman.jpg">
             </div>
           </div>
           <!-- /.card-body -->
@@ -48,9 +52,11 @@
 
     // Akses properti row objek
     var nama = row.nama;
+    var image_kategori = row.image_kategori;
 
     // Set value ke input
     document.getElementById("nama").value = nama;
+    document.getElementById("image_kategori").value = image_kategori;
 
     // Menampilkan button ubah dan menyembunyikan button simpan
     document.getElementById("ubah").classList.remove("d-none");
@@ -65,6 +71,7 @@
 
     // Reset values
     document.getElementById("nama").value = null;
+    document.getElementById("image_kategori").value = null;
 
     // Menampilkan button simpan dan menyembunyikan button ubah
     document.getElementById("ubah").classList.add("d-none");

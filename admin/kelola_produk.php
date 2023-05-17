@@ -3,7 +3,8 @@ require_once '../db_config/dbkoneksi.php';
 
 $sql = "SELECT produk.*, kategori_produk.nama AS kategori_produk
 FROM produk
-INNER JOIN kategori_produk ON produk.kategori_produk_id = kategori_produk.id";
+INNER JOIN kategori_produk ON produk.kategori_produk_id = kategori_produk.id
+ORDER BY produk.id ASC";
 $product = $dbh->query($sql);
 ?>
 

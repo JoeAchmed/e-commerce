@@ -1,7 +1,10 @@
 <?php 
   $host = 'localhost';
+  // $db = 'dbpos';
   $db = 'db_ahma22291ti';
+  // $user = 'root';
   $user = 'ahma22291ti';
+  // $pass = '';
   $pass = '21610110222291';
   $charset='utf8mb4';
 

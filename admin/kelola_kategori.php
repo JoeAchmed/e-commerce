@@ -1,7 +1,7 @@
 <?php
 require_once '../db_config/dbkoneksi.php';
 
-$sql = "SELECT * FROM kategori_produk ";
+$sql = "SELECT * FROM kategori_produk ORDER BY kategori_produk.id ASC";
 $categories = $dbh->query($sql);
 ?>
 

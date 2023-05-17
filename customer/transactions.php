@@ -11,6 +11,8 @@ if (!$order) {
     echo $dbh->errorInfo(); // Display any database errors
     echo $sql; // Display the actual SQL query
 }
+
+$activePage = 'transactions';
 ?>
 
 <!DOCTYPE html>

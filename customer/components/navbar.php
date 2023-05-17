@@ -12,8 +12,8 @@
             <a href="#">Links</a>
             <ul>
               <li><a href="tel:#"><i class="icon-phone"></i>Call: (+62)812-7106-2214</a></li>
-              <li><a href="about.php">About Us</a></li>
-              <li><a href="contact.php">Contact Us</a></li>
+              <li <?php if ($activePage == 'about') echo 'class="text-primary"'; ?>><a href="about.php">About Us</a></li>
+              <li <?php if ($activePage == 'contact') echo 'class="text-primary"'; ?>><a href="contact.php">Contact Us</a></li>
               <li><a href="../admin/index.php"><i class="icon-user"></i>Login</a></li>
             </ul>
           </li>
@@ -36,10 +36,13 @@
 
         <nav class="main-nav">
           <ul class="menu sf-arrows">
-            <li class="active">
+            <li <?php if ($activePage == 'home') echo 'class="active"'; ?>>
               <a href="index.php">Home</a>
             </li>
-            <li>
+            <li <?php if ($activePage == 'product') echo 'class="active"'; ?>>
+              <a href="product.php">Product</a>
+            </li>
+            <li <?php if ($activePage == 'transactions') echo 'class="active"'; ?>>
               <a href="transactions.php">Transactions</a>
             </li>
           </ul><!-- End .menu -->

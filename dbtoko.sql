@@ -29,18 +29,19 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `kategori_produk` (
   `id` int(11) NOT NULL,
-  `nama` varchar(45) NOT NULL
+  `nama` varchar(45) NOT NULL,
+  `image_kategori` TEXT DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data untuk tabel `kategori_produk`
 --
 
-INSERT INTO `kategori_produk` (`id`, `nama`) VALUES
-(1, 'Elektronik'),
-(2, 'Furniture'),
-(3, 'Makanan'),
-(4, 'Minuman');
+INSERT INTO `kategori_produk` (`id`, `nama`, `image_kategori`) VALUES
+(1, 'Elektronik', 'https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80'),
+(2, 'Furniture', 'https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80'),
+(3, 'Makanan', 'https://images.unsplash.com/photo-1606787366850-de6330128bfc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80'),
+(4, 'Minuman', 'https://images.unsplash.com/photo-1551024709-8f23befc6f87?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1857&q=80');
 
 -- --------------------------------------------------------
 

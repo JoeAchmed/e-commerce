@@ -1,10 +1,16 @@
 <?php
 require_once '../db_config/dbkoneksi.php';
 
+$kp_id = $_GET['kategori_produk_id'];
+
 $sql_produk = "SELECT produk.*, kategori_produk.nama AS kategori_produk
 FROM produk
 INNER JOIN kategori_produk ON produk.kategori_produk_id = kategori_produk.id";
 $sql_kategori = "SELECT * FROM kategori_produk";
+
+if (isset($kp_id)) {
+  $sql_produk .= " WHERE kategori_produk.id =" . $kp_id;
+}
 
 $product = $dbh->query($sql_produk);
 $rskategori = $dbh->query($sql_kategori);
@@ -13,6 +19,9 @@ $col_product = 4;
 if (isset($_GET["col_product"])) {
   $col_product = $_GET["col_product"];
 }
+
+$activePage = 'home';
+
 ?>
 
 <!DOCTYPE html>
@@ -78,7 +87,7 @@ if (isset($_GET["col_product"])) {
               <div class="sidebar sidebar-shop">
                 <div class="widget widget-clean">
                   <label>Filters:</label>
-                  <a href="#" class="sidebar-filter-clear">Clean All</a>
+                  <a href="index.php">Clean All</a>
                 </div><!-- End .widget widget-clean -->
 
                 <div class="widget widget-collapsible">
@@ -101,37 +110,16 @@ if (isset($_GET["col_product"])) {
 
                         foreach ($rskategori as $rowkategori) {
                         ?>
-                          <div class="filter-item" key="<?= $rowkategori['nama'] ?>">
-                            <div class="custom-control custom-checkbox">
-                              <label class="custom-control-label" for="cat-<?= $rowkategori['nama'] ?>"><?= $rowkategori['nama'] ?></label>
-                            </div><!-- End .custom-checkbox -->
-                            <span class="item-count"><?= $rowkategori['jumlah_produk'] ?></span>
-                          </div><!-- End .filter-item -->
+                          <a href="index.php?kategori_produk_id=<?= $rowkategori['id'] ?>">
+                            <div class="filter-item" key="<?= $rowkategori['nama'] ?>">
+                              <label for="cat-<?= $rowkategori['nama'] ?>" <?= $rowkategori['id'] == $kp_id ? 'class="text-primary text-bold"' : '' ?>><?= $rowkategori['nama'] ?></label>
+                              <span class="item-count"><?= $rowkategori['jumlah_produk'] ?></span>
+                            </div><!-- End .filter-item -->
+                          </a>
                         <?php
                         }
                         ?>
                       </div><!-- End .filter-items -->
-                    </div><!-- End .widget-body -->
-                  </div><!-- End .collapse -->
-                </div><!-- End .widget -->
-
-                <div class="widget widget-collapsible">
-                  <h3 class="widget-title">
-                    <a data-toggle="collapse" href="#widget-5" role="button" aria-expanded="true" aria-controls="widget-5">
-                      Price
-                    </a>
-                  </h3><!-- End .widget-title -->
-
-                  <div class="collapse show" id="widget-5">
-                    <div class="widget-body">
-                      <div class="filter-price">
-                        <div class="filter-price-text">
-                          Price Range:
-                          <span id="filter-price-range"></span>
-                        </div><!-- End .filter-price-text -->
-
-                        <div id="price-slider"></div><!-- End #price-slider -->
-                      </div><!-- End .filter-price -->
                     </div><!-- End .widget-body -->
                   </div><!-- End .collapse -->
                 </div><!-- End .widget -->
@@ -154,7 +142,7 @@ if (isset($_GET["col_product"])) {
                     </div>
                   </div><!-- End .toolbox-sort -->
                   <div class="toolbox-layout">
-                    <a href="index.php?col_product=1" class="btn-layout <?= $col_product == 1 ? 'active' : '' ?>">
+                    <a href="index.php?col_product=1&<?= isset($kp_id) ? 'kategori_produk_id=' . $kp_id : '' ?>" class="btn-layout <?= $col_product == 1 ? 'active' : '' ?>">
                       <svg width="16" height="10">
                         <rect x="0" y="0" width="4" height="4" />
                         <rect x="6" y="0" width="10" height="4" />
@@ -163,7 +151,7 @@ if (isset($_GET["col_product"])) {
                       </svg>
                     </a>
 
-                    <a href="index.php?col_product=2" class="btn-layout <?= $col_product == 2 ? 'active' : '' ?>">
+                    <a href="index.php?col_product=2&<?= isset($kp_id) ? 'kategori_produk_id=' . $kp_id : '' ?>" class="btn-layout <?= $col_product == 2 ? 'active' : '' ?>">
                       <svg width="10" height="10">
                         <rect x="0" y="0" width="4" height="4" />
                         <rect x="6" y="0" width="4" height="4" />
@@ -172,7 +160,7 @@ if (isset($_GET["col_product"])) {
                       </svg>
                     </a>
 
-                    <a href="index.php?col_product=3" class="btn-layout <?= $col_product == 3 ? 'active' : '' ?>">
+                    <a href="index.php?col_product=3&<?= isset($kp_id) ? 'kategori_produk_id=' . $kp_id : '' ?>" class="btn-layout <?= $col_product == 3 ? 'active' : '' ?>">
                       <svg width="16" height="10">
                         <rect x="0" y="0" width="4" height="4" />
                         <rect x="6" y="0" width="4" height="4" />
@@ -183,7 +171,7 @@ if (isset($_GET["col_product"])) {
                       </svg>
                     </a>
 
-                    <a href="index.php?col_product=4" class="btn-layout <?= $col_product == 4 ? 'active' : '' ?>">
+                    <a href="index.php?col_product=4&<?= isset($kp_id) ? 'kategori_produk_id=' . $kp_id : '' ?>" class="btn-layout <?= $col_product == 4 ? 'active' : '' ?>">
                       <svg width="22" height="10">
                         <rect x="0" y="0" width="4" height="4" />
                         <rect x="6" y="0" width="4" height="4" />
@@ -200,6 +188,18 @@ if (isset($_GET["col_product"])) {
               </div><!-- End .toolbox -->
 
               <div class="products mb-3">
+                <?php
+                if ($product->rowCount() === 0) {
+                ?>
+                  <div class="error-content" style="background-image: url(assets/images/backgrounds/error-bg.jpg)">
+                    <div class="container pl-5 ml-5">
+                      <h1 class="error-title">Oppss !! No Product Found</h1><!-- End .error-title -->
+                      <p>Please select another filter or request admin to add the new products.</p>
+                    </div><!-- End .container -->
+                  </div><!-- End .error-content text-center -->
+                <?php
+                }
+                ?>
                 <?php
 
                 if ($col_product == 4) {

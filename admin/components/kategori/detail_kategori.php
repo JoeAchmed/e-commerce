@@ -11,6 +11,11 @@
       <div class="modal-body">
         <tr>
           <td>
+            <img id="image-kategori" src="" alt="Image Kategori" class="py-2" width="300">
+          </td>
+        </tr>
+        <tr>
+          <td>
             <h5>Nama Kategori:</h5>
           </td>
           <td>
@@ -31,6 +36,7 @@
     try {
       var category = JSON.parse(payload);
       document.getElementById("nama-kategori").innerHTML = category.nama;
+      document.getElementById("image-kategori").setAttribute("src", category.image_kategori);
      
     } catch (error) {
       console.log(error);

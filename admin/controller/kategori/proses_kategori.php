@@ -16,19 +16,21 @@ if (isset($idedit)) {
 }
 
 $_nama = $_POST['nama'];
+$_image_kategori = $_POST['image_kategori'];
 
 $_proses = $_POST['proses'];
 
 
 // array data
-$ar_data[] = $_nama; // ? 2
+$ar_data[] = $_nama;
+$ar_data[] = $_image_kategori;
 
 if ($_proses == "Simpan") {
    // data baru
-   $sql = "INSERT INTO kategori_produk (nama) VALUES (?)";
+   $sql = "INSERT INTO kategori_produk (nama, image_kategori) VALUES (?, ?)";
 } else if ($_proses == "Ubah") {
    $ar_data[] = $idedit; // ? 8
-   $sql = "UPDATE kategori_produk SET nama=? WHERE id=?";
+   $sql = "UPDATE kategori_produk SET nama=?,image_kategori=? WHERE id=?";
 }
 if (isset($sql)) {
    $st = $dbh->prepare($sql);

@@ -1,10 +1,20 @@
-<?php 
-$activePage = 'contact';
-?>
+<?php
+require_once '../db_config/dbkoneksi.php';
+$activePage = 'product';
 
+$sql = 'SELECT kp.nama AS kategori, kp.id AS kp_id, COUNT(p.id) AS jumlah_produk, kp.image_kategori AS image_kategori
+FROM kategori_produk kp
+LEFT JOIN produk p ON kp.id = p.kategori_produk_id
+GROUP BY kp.id, kp.nama;
+';
+
+$rskategori = $dbh->query($sql);
+?>
 <!DOCTYPE html>
 <html lang="en">
 
+
+<!-- molla/product-category-boxed.html  22 Nov 2019 10:03:02 GMT -->
 
 <head>
     <meta charset="UTF-8">
@@ -29,183 +39,62 @@ $activePage = 'contact';
     <!-- Plugins CSS File -->
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <!-- Main CSS File -->
-    <link rel="stylesheet" href="assets/css/additional.css">
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/additional.css">
 </head>
 
 <body>
     <div class="page-wrapper">
         <?php
-        require_once "./components/navbar.php"
+        require_once "components/navbar.php";
         ?>
 
         <main class="main">
-            <nav aria-label="breadcrumb" class="breadcrumb-nav border-0 mb-0">
+            <div class="page-header text-center" style="background-image: url('assets/images/backgrounds/cta/bg-2.jpg')">
+                <div class="container">
+                    <h1 class="page-title">Product Category<span>Molla Store</span></h1>
+                </div><!-- End .container -->
+            </div><!-- End .page-header -->
+            <nav aria-label="breadcrumb" class="breadcrumb-nav breadcrumb-with-filter">
                 <div class="container">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Contact us</li>
+                        <li class="breadcrumb-item active" aria-current="page">Product Category</li>
                     </ol>
                 </div><!-- End .container -->
             </nav><!-- End .breadcrumb-nav -->
-            <div class="container">
-                <div class="page-header page-header-big text-center" style="background-image: url('assets/images/contact-header-bg.jpg')">
-                    <h1 class="page-title text-white">Contact us<span class="text-white">keep in touch with us</span></h1>
-                </div><!-- End .page-header -->
-            </div><!-- End .container -->
 
-            <div class="page-content pb-0">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-6 mb-2 mb-lg-0">
-                            <h2 class="title mb-1">Contact Information</h2><!-- End .title mb-2 -->
-                            <p class="mb-3">Vestibulum volutpat, lacus a ultrices sagittis, mi neque euismod dui, eu pulvinar nunc sapien ornare nisl. Phasellus pede arcu, dapibus eu, fermentum et, dapibus sed, urna.</p>
-                            <div class="row">
-                                <div class="col-sm-7">
-                                    <div class="contact-info">
-                                        <h3>The Office</h3>
-
-                                        <ul class="contact-list">
-                                            <li>
-                                                <i class="icon-map-marker"></i>
-                                                Jl. Bintara 14, No. 61 Kota Bekasi, ZIP 17134 Jawa Barat, Indonesia
-                                            </li>
-                                            <li>
-                                                <i class="icon-phone"></i>
-                                                <a href="tel:#">(+62)812-7106-2214</a>
-                                            </li>
-                                            <li>
-                                                <i class="icon-envelope"></i>
-                                                <a href="mailto:#">info@molla.com</a>
-                                            </li>
-                                        </ul><!-- End .contact-list -->
-                                    </div><!-- End .contact-info -->
-                                </div><!-- End .col-sm-7 -->
-
-                                <div class="col-sm-5">
-                                    <div class="contact-info">
-                                        <h3>The Office</h3>
-
-                                        <ul class="contact-list">
-                                            <li>
-                                                <i class="icon-clock-o"></i>
-                                                <span class="text-dark">Monday-Saturday</span> <br>11am-7pm WIB
-                                            </li>
-                                            <li>
-                                                <i class="icon-calendar"></i>
-                                                <span class="text-dark">Sunday</span> <br>11am-6pm WIB
-                                            </li>
-                                        </ul><!-- End .contact-list -->
-                                    </div><!-- End .contact-info -->
-                                </div><!-- End .col-sm-5 -->
-                            </div><!-- End .row -->
-                        </div><!-- End .col-lg-6 -->
-                        <div class="col-lg-6">
-                            <h2 class="title mb-1">Got Any Questions?</h2><!-- End .title mb-2 -->
-                            <p class="mb-2">Use the form below to get in touch with the sales team</p>
-
-                            <form action="#" class="contact-form mb-3">
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <label for="cname" class="sr-only">Name</label>
-                                        <input type="text" class="form-control" id="cname" placeholder="Name *" required>
-                                    </div><!-- End .col-sm-6 -->
-
-                                    <div class="col-sm-6">
-                                        <label for="cemail" class="sr-only">Email</label>
-                                        <input type="email" class="form-control" id="cemail" placeholder="Email *" required>
-                                    </div><!-- End .col-sm-6 -->
-                                </div><!-- End .row -->
-
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <label for="cphone" class="sr-only">Phone</label>
-                                        <input type="tel" class="form-control" id="cphone" placeholder="Phone">
-                                    </div><!-- End .col-sm-6 -->
-
-                                    <div class="col-sm-6">
-                                        <label for="csubject" class="sr-only">Subject</label>
-                                        <input type="text" class="form-control" id="csubject" placeholder="Subject">
-                                    </div><!-- End .col-sm-6 -->
-                                </div><!-- End .row -->
-
-                                <label for="cmessage" class="sr-only">Message</label>
-                                <textarea class="form-control" cols="30" rows="4" id="cmessage" required placeholder="Message *"></textarea>
-
-                                <button type="submit" class="btn btn-outline-primary-2 btn-minwidth-sm">
-                                    <span>SUBMIT</span>
-                                    <i class="icon-long-arrow-right"></i>
-                                </button>
-                            </form><!-- End .contact-form -->
-                        </div><!-- End .col-lg-6 -->
-                    </div><!-- End .row -->
-
-                    <hr class="mt-4 mb-5">
-
-                    <div class="stores mb-4 mb-lg-5">
-                        <h2 class="title text-center mb-3">Our Stores</h2><!-- End .title text-center mb-2 -->
-
+            <div class="page-content">
+                <div class="categories-page">
+                    <div class="container">
                         <div class="row">
-                            <div class="col-lg-6">
-                                <div class="store">
-                                    <div class="row">
-                                        <div class="col-sm-5 col-xl-6">
-                                            <figure class="store-media mb-2 mb-lg-0">
-                                                <img src="assets/images/stores/img-1.jpg" alt="image">
-                                            </figure><!-- End .store-media -->
-                                        </div><!-- End .col-xl-6 -->
-                                        <div class="col-sm-7 col-xl-6">
-                                            <div class="store-content">
-                                                <h3 class="store-title">Wall Street Plaza</h3><!-- End .store-title -->
-                                                <address>88 Pine St, New York, NY 10005, USA</address>
-                                                <div><a href="tel:#">+1 987-876-6543</a></div>
+                            <?php
+                            foreach ($rskategori as $rowkategori) {
+                            ?>
+                                <div class="col-md-6">
+                                    <div class="banner banner-cat banner-badge">
+                                        <a href="index.php?kategori_produk_id=<?= $rowkategori['kp_id'] ?>">
+                                            <img src="<?= $rowkategori['image_kategori'] ?>" alt="Banner">
+                                        </a>
 
-                                                <h4 class="store-subtitle">Store Hours:</h4><!-- End .store-subtitle -->
-                                                <div>Monday - Saturday 11am to 7pm</div>
-                                                <div>Sunday 11am to 6pm</div>
-
-                                                <a href="#" class="btn btn-link" target="_blank"><span>View Map</span><i class="icon-long-arrow-right"></i></a>
-                                            </div><!-- End .store-content -->
-                                        </div><!-- End .col-xl-6 -->
-                                    </div><!-- End .row -->
-                                </div><!-- End .store -->
-                            </div><!-- End .col-lg-6 -->
-
-                            <div class="col-lg-6">
-                                <div class="store">
-                                    <div class="row">
-                                        <div class="col-sm-5 col-xl-6">
-                                            <figure class="store-media mb-2 mb-lg-0">
-                                                <img src="assets/images/stores/img-2.jpg" alt="image">
-                                            </figure><!-- End .store-media -->
-                                        </div><!-- End .col-xl-6 -->
-
-                                        <div class="col-sm-7 col-xl-6">
-                                            <div class="store-content">
-                                                <h3 class="store-title">One New York Plaza</h3><!-- End .store-title -->
-                                                <address>88 Pine St, New York, NY 10005, USA</address>
-                                                <div><a href="tel:#">+1 987-876-6543</a></div>
-
-                                                <h4 class="store-subtitle">Store Hours:</h4><!-- End .store-subtitle -->
-                                                <div>Monday - Friday 9am to 8pm</div>
-                                                <div>Saturday - 9am to 2pm</div>
-                                                <div>Sunday - Closed</div>
-
-                                                <a href="#" class="btn btn-link" target="_blank"><span>View Map</span><i class="icon-long-arrow-right"></i></a>
-                                            </div><!-- End .store-content -->
-                                        </div><!-- End .col-xl-6 -->
-                                    </div><!-- End .row -->
-                                </div><!-- End .store -->
-                            </div><!-- End .col-lg-6 -->
+                                        <a class="banner-link" href="index.php?kategori_produk_id=<?= $rowkategori['kp_id'] ?>">
+                                            <h3 class="banner-title"><?= $rowkategori["kategori"] ?></h3><!-- End .banner-title -->
+                                            <h4 class="banner-subtitle"><?= $rowkategori["jumlah_produk"] ?> Products</h4><!-- End .banner-subtitle -->
+                                            <span class="banner-link-text">Shop Now</span>
+                                        </a><!-- End .banner-link -->
+                                    </div><!-- End .banner -->
+                                </div><!-- End .col-md-6 -->
+                            <?php
+                            }
+                            ?>
                         </div><!-- End .row -->
-                    </div><!-- End .stores -->
-                </div><!-- End .container -->
-                <iframe width="100%" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.297897783508!2d106.96529317503442!3d-6.224395960960573!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e698c64e41ff3a7%3A0x7d018fd596c2df56!2sBu%20Lulu%20Catering!5e0!3m2!1sid!2sid!4v1683964906108!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div><!-- End .container -->
+                </div><!-- End .categories-page -->
             </div><!-- End .page-content -->
         </main><!-- End .main -->
 
         <?php
-        require_once "./components/footer.php";
+        require_once "components/footer.php";
         ?>
     </div><!-- End .page-wrapper -->
     <button id="scroll-top" title="Back to Top"><i class="icon-arrow-up"></i></button>
@@ -496,9 +385,6 @@ $activePage = 'contact';
         </div><!-- End .modal-dialog -->
     </div><!-- End .modal -->
 
-    <!-- Google Map -->
-    <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDc3LRykbLB-y8MuomRUIY0qH5S6xgBLX4"></script>
-
     <!-- google translate -->
     <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
@@ -514,6 +400,6 @@ $activePage = 'contact';
 </body>
 
 
-<!-- molla/contact.html  22 Nov 2019 10:04:03 GMT -->
+<!-- molla/product-category-boxed.html  22 Nov 2019 10:03:09 GMT -->
 
 </html>

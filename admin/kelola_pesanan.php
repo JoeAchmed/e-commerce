@@ -4,7 +4,8 @@ require_once '../db_config/dbkoneksi.php';
 $sql = "SELECT pesanan.*, produk.nama AS nama_produk, produk.harga_beli, produk.harga_jual, produk.kode AS kode_produk, produk.stok AS sisa_stok_produk, produk.deskripsi AS deskripsi_produk, kategori_produk.nama AS kategori_produk
 FROM pesanan
 INNER JOIN produk ON pesanan.produk_id = produk.id
-INNER JOIN kategori_produk ON produk.kategori_produk_id = kategori_produk.id";
+INNER JOIN kategori_produk ON produk.kategori_produk_id = kategori_produk.id
+ORDER BY pesanan.id ASC";
 $order = $dbh->query($sql);
 
 if (!$order) {
@@ -146,7 +147,7 @@ if (!$order) {
                           <th>Nomor HP</th>
                           <th>Email</th>
                           <th>Jumlah Pesanan</th>
-                          <th style="width: 20%"></th>
+                          <th></th>
                         </tr>
                       </thead>
                       <tbody>
@@ -168,14 +169,14 @@ if (!$order) {
                                 <i class="fas fa-eye"></i>
                                 Detail
                               </a>
-                              <a href="" class="btn btn-success btn-sm" data-toggle="modal" data-target="#modal-default" onclick="getPayloadDetailForUpdate('<?php echo htmlspecialchars(json_encode($row), ENT_QUOTES, 'UTF-8'); ?>')">
+                              <!-- <a href="" class="btn btn-success btn-sm" data-toggle="modal" data-target="#modal-default" onclick="getPayloadDetailForUpdate('<?php echo htmlspecialchars(json_encode($row), ENT_QUOTES, 'UTF-8'); ?>')">
                                 <i class="fas fa-edit"></i>
                                 Ubah
                               </a>
                               <a href="" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#confirm-delete" onclick="handleGetNameOrder('<?php echo htmlspecialchars(json_encode($row), ENT_QUOTES, 'UTF-8'); ?>')">
                                 <i class="fas fa-trash"></i>
                                 Hapus
-                              </a>
+                              </a> -->
                             </td>
                           </tr>
                         <?php
